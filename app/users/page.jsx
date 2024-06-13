@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 async function fetchApi(uri) {
   const res = await fetch(uri)
@@ -11,8 +12,8 @@ async function page() {
   return (
     <div>
       <ul>
-        {data.users.map(user => <li id={user.id}>
-            {user.firstName} {user.lastName}
+        {data.users.map(user => <li key={user.id}>
+            <Link href={`users/${user.id}`}>{user.firstName} {user.lastName}</Link>
         </li>)}
       </ul>
     </div>
